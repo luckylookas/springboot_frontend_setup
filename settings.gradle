@@ -1,0 +1,4 @@
+rootProject.name = 'routing'
+
+include 'routing-server'
+include 'routing-frontend'

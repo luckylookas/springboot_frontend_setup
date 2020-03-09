@@ -1,0 +1,17 @@
+allprojects {
+
+    group = "$group"
+    version = "$version"
+    sourceCompatibility = "$sourceCompatibility"
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+}
+
+
+
