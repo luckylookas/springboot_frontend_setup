@@ -1,0 +1,21 @@
+### this only works thanks to the registry.addViewController("/").setViewName("forward:/index.html");
+GET http://localhost:8080/
+###
+GET http://localhost:8080
+###
+GET http://localhost:8080/index.html
+###
+GET http://localhost:8080/test/abc
+###
+GET http://localhost:8080/indey.html
+###
+GET http://localhost:8080/api/details
+###
+GET http://localhost:8080/swagger-resources
+###
+GET http://localhost:8080/v2/api-docs
+###
+GET http://localhost:8080/springfox
+### can't get this to work. suspecting a problem with webjars in gradle?
+GET http://localhost:8080/swagger-ui.html
+###
