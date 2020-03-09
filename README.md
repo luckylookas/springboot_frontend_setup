@@ -1,3 +1,1 @@
-### ViewController
-
-toggle ```app.addIndexViewForward=false``` to see "/" or typos like "/indey.html" stop working.
+# Base for spring-boot + angular projects

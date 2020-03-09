@@ -7,7 +7,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @SpringBootApplication
 @EnableWebMvc
-@EnableConfigurationProperties
 public class RoutingApplication {
 
     public static final String RESOURCES_FOLDER = "classpath:/META-INF/resources/";
@@ -15,5 +14,4 @@ public class RoutingApplication {
     public static void main(String[] args) {
         SpringApplication.run(RoutingApplication.class, args);
     }
-
 }

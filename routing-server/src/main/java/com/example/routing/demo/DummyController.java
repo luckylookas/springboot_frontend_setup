@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api")
 public class DummyController {
 
-    @GetMapping(
-            path = "details",
-            produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "details", produces = MediaType.APPLICATION_JSON_VALUE)
     public String getDummyDetails() {
         return "{\"detail\": 123}";
     }

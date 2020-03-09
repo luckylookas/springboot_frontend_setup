@@ -1,25 +1,30 @@
 package com.example.routing.demo;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.resource.PathResourceResolver;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import java.io.IOException;
 
 import static com.example.routing.demo.RoutingApplication.RESOURCES_FOLDER;
 
-
 @Configuration
 @RequiredArgsConstructor
-public class ResolverConfig implements WebMvcConfigurer {
+public class ViewConfig implements WebMvcConfigurer {
 
-    private final AppProperties appProperties;
+    @Bean
+    public ViewResolver internalResourceViewResolver() {
+        return new InternalResourceViewResolver();
+    }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -29,7 +34,6 @@ public class ResolverConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations(RESOURCES_FOLDER + "webjars/");
 
-        // add this one last as a catch all Resolver.
         registry.addResourceHandler("/**/*")
                 .addResourceLocations("classpath:/static/")
                 .resourceChain(true)
@@ -46,9 +50,7 @@ public class ResolverConfig implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        if (appProperties.isAddIndexViewForward()) {
-            registry.setOrder(Ordered.LOWEST_PRECEDENCE);
-            registry.addViewController("/**").setViewName("forward:/index.html");
-        }
+        registry.setOrder(Ordered.LOWEST_PRECEDENCE);
+        registry.addViewController("/**").setViewName("forward:/index.html");
     }
 }
